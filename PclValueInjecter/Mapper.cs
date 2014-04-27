@@ -55,9 +55,9 @@ namespace Xciles.PclValueInjecter
             return new TypeMapper<TSource, TTarget>();
         }
 
-        public static void AddMapper<TS, TT>(ITypeMapper<TS, TT> o)
+        public static void AddMapper<TSource, TTarget>(ITypeMapper<TSource, TTarget> o)
         {
-            Mappers.Add(typeof(ITypeMapper<TS, TT>), o);
+            Mappers.Add(typeof(ITypeMapper<TSource, TTarget>), o);
         }
 
         public static void ClearMappers()
@@ -105,9 +105,9 @@ namespace Xciles.PclValueInjecter
         }
     }
 
-    public static class Creator
+    internal static class Creator
     {
-        public static object Create(Type type)
+        internal static object Create(Type type)
         {
             if (type.IsEnumerable())
             {

@@ -101,5 +101,59 @@ namespace Xciles.PclValueInjecter.Tests
             Assert.AreEqual("f3", bar.Foos.Last().Name);
         }
 
+
+
+
+        public class FooBar : PclValueInjecter.TypeMapper<Foo, Bar>
+        {
+            public override Bar Map(Foo source, Bar target)
+            {
+                base.Map(source, target);
+                target.NoConvention = source.Name + source.Xyz + source.Props;
+                return target;
+            }
+        }
+
+        [Test]
+        public void MapShouldUseFooBarTypeMapperForMapping()
+        {
+            PclValueInjecter.MapperFactory.AddMapper(new FooBar());
+            var foo = new Foo { Name = "a", Props = "b", Xyz = 123 };
+            var bar = new Bar();
+
+            PclValueInjecter.Mapper.Map(foo, bar);
+
+            Assert.AreEqual("a123b", bar.NoConvention);
+            Assert.AreEqual(foo.Name, bar.Name);
+        }
+
+        [Test]
+        public void MapShouldMapCollectionPropertiesAndUseFooBarTypeMapper()
+        {
+            PclValueInjecter.MapperFactory.AddMapper(new FooBar());
+            var foo = new Foo
+            {
+                Foos = new List<Foo>
+                           {
+                               new Foo{Name = "f1",Props = "v",Xyz = 19},
+                               new Foo{Name = "f2",Props = "i",Xyz = 7},
+                               new Foo{Name = "f3",Props = "v",Xyz = 3},
+                           }
+            };
+
+            var bar = PclValueInjecter.Mapper.Map<Foo, Bar>(foo);
+
+            Assert.AreEqual(foo.Foos.Count(), bar.Foos.Count());
+
+            var ffoos = foo.Foos.ToArray();
+            var bfoos = bar.Foos.ToArray();
+
+            for (var i = 0; i < ffoos.Count(); i++)
+            {
+                Assert.AreEqual(ffoos[i].Name, bfoos[i].Name);
+                Assert.AreEqual(ffoos[i].Name + ffoos[i].Xyz + ffoos[i].Props, bfoos[i].NoConvention);
+            }
+        }
+
     }
 }
