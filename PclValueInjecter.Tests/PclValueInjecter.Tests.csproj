@@ -56,10 +56,47 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AutomapperSimulationTest.cs" />
+    <Compile Include="BelitreTest.cs" />
+    <Compile Include="CloneTests.cs" />
+    <Compile Include="Cloning.cs" />
+    <Compile Include="CollectionsTest.cs" />
+    <Compile Include="DanRyanIDataReaderTests.cs" />
+    <Compile Include="DescriptorToolsTest.cs" />
+    <Compile Include="EnumInjectionsTests.cs" />
+    <Compile Include="ExactValueInjectionTests.cs" />
+    <Compile Include="ExtensionsTests.cs" />
+    <Compile Include="FlatLoopValueInjectionTests.cs" />
+    <Compile Include="FlatteningTest.cs" />
+    <Compile Include="JohnLandheer.cs" />
+    <Compile Include="KnownSourceValueInjectionTest.cs" />
+    <Compile Include="KnownTargetValueInjectionTest.cs" />
+    <Compile Include="KohanTests.cs" />
+    <Compile Include="LoopValueInjectionTests.cs" />
+    <Compile Include="Noemata.cs" />
+    <Compile Include="NullableInjectionsTests.cs" />
+    <Compile Include="PrefixedValueInjectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyInfosStorageTests.cs" />
+    <Compile Include="QrowTest.cs" />
+    <Compile Include="SixFootUnderTest.cs" />
+    <Compile Include="StepByStep.cs" />
+    <Compile Include="Stuff.cs" />
+    <Compile Include="TestingTools.cs" />
+    <Compile Include="TrimTests.cs" />
+    <Compile Include="TunnelierTests.cs" />
+    <Compile Include="UberFlatterTests.cs" />
+    <Compile Include="UberTest.cs" />
+    <Compile Include="ValueInjecterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PclValueInjecter\PclValueInjecter.csproj">
+      <Project>{581e675e-c6bf-41d0-9b87-3cd30256bad4}</Project>
+      <Name>PclValueInjecter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
