@@ -10,7 +10,7 @@ namespace Xciles.PclValueInjecter
     /// </summary>
     public static class PropertyInfosStorage
     {
-        private static readonly IDictionary<Type, PropertyDescriptorCollection> Storage = new Dictionary<Type, PropertyDescriptorCollection>();
+        private static readonly IDictionary<Type, IList<PropertyInfo>> Storage = new Dictionary<Type, IList<PropertyInfo>>();
         private static readonly IDictionary<Type, IEnumerable<PropertyInfo>> InfosStorage = new Dictionary<Type, IEnumerable<PropertyInfo>>();
 
         private static readonly object PropsLock = new object();
@@ -24,7 +24,7 @@ namespace Xciles.PclValueInjecter
             Actions.Add(action);
         }
 
-        public static PropertyDescriptorCollection GetProps(Type type)
+        public static IList<PropertyInfo> GetProps(Type type)
         {
             if (!Storage.ContainsKey(type))
             {
@@ -36,7 +36,7 @@ namespace Xciles.PclValueInjecter
                             foreach (var action in Actions)
                                 action(type);
 
-                        var props = TypeDescriptor.GetProperties(type);
+                        var props = type.GetProperties();
                         Storage.Add(type, props);
                     }
                 }
@@ -45,7 +45,7 @@ namespace Xciles.PclValueInjecter
             return Storage[type];
         }
 
-        public static PropertyDescriptorCollection GetProps(this object o)
+        public static IList<PropertyInfo> GetProps(this object o)
         {
             return GetProps(o.GetType());
         }

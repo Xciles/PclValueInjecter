@@ -1,8 +1,10 @@
-﻿namespace Xciles.PclValueInjecter
+﻿using System.Reflection;
+
+namespace Xciles.PclValueInjecter
 {
     public class PropertyWithComponent
     {
-        public PropertyDescriptor Property;
+        public PropertyInfo Property;
         public object Component;
     }
 }
