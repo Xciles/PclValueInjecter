@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Xciles.PclValueInjecter.Extensions;
 
 namespace Xciles.PclValueInjecter.Tests
 {
@@ -18,5 +19,6 @@ namespace Xciles.PclValueInjecter.Tests
             const string s = "NameRaw";
             s.RemoveSuffix("Raw").IsEqualTo("Name");
         }
+        // todo add more ;)
     }
 }
