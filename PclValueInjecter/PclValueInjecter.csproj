@@ -37,9 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConventionInjection.cs" />
+    <Compile Include="Creator.cs" />
     <Compile Include="CustomInjections\Class1.cs" />
     <Compile Include="CustomizableValueInjection.cs" />
     <Compile Include="DescriptorTools.cs" />
+    <Compile Include="EnumerableTypeMapper.cs" />
     <Compile Include="ExactValueInjection.cs" />
     <Compile Include="Extensions\PropertyInfoExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -47,12 +49,14 @@
     <Compile Include="FlatLoopValueInjection.cs" />
     <Compile Include="IKnownSourceValueInjection.cs" />
     <Compile Include="INoSourceValueInjection.cs" />
+    <Compile Include="ITypeMapper.cs" />
     <Compile Include="IValueInjecter.cs" />
     <Compile Include="KnownSourceValueInjection.cs" />
     <Compile Include="KnownTargetValueInjection.cs" />
     <Compile Include="LoopValueInjection.cs" />
     <Compile Include="LoopValueInjectionBase.cs" />
     <Compile Include="Mapper.cs" />
+    <Compile Include="MapperFactory.cs" />
     <Compile Include="NoSourceValueInjection.cs" />
     <Compile Include="PrefixedValueInjection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +66,7 @@
     <Compile Include="StaticValueInjecter.cs" />
     <Compile Include="TrailFinder.cs" />
     <Compile Include="Tunnelier.cs" />
+    <Compile Include="TypeMapper.cs" />
     <Compile Include="UberFlatter.cs" />
     <Compile Include="UnflatLoopValueInjection.cs" />
     <Compile Include="ValueInjecter.cs" />
