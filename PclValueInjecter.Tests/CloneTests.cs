@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Omu.ValueInjecter;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     public class CloneTests
     {

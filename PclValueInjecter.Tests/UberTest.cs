@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
-using Hyper.ComponentModel;
 using NUnit.Framework;
-using Omu.ValueInjecter;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     [TestFixture]
     public class UberTest

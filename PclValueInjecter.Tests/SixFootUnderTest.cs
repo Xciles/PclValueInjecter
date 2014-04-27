@@ -1,18 +1,12 @@
 ﻿using System;
 using NUnit.Framework;
-using Omu.ValueInjecter;
-using Tests;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     public class CountryDTO
     {
         public int CountryId { get; set; }
         public string Name { get; set; }
-    }
-
-
-
     }
 
     public class SixFootUnderTest
@@ -21,11 +15,11 @@ namespace Tests
         public void Test()
         {
             var o = new SimpleClass1
-                        {
-                            CountryRaw = "United States",
-                            GenderRaw = "Female",
-                            Person = new Person { GenderRaw = "Male" }
-                        };
+            {
+                CountryRaw = "United States",
+                GenderRaw = "Female",
+                Person = new Person { GenderRaw = "Male" }
+            };
 
             var oo = new SimpleClass1();
 
@@ -98,3 +92,4 @@ namespace Tests
             Unknown
         }
     }
+}

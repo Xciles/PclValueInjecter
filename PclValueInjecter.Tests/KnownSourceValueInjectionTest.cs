@@ -1,9 +1,6 @@
-﻿using System;
-using System.ComponentModel;
-using NUnit.Framework;
-using Omu.ValueInjecter;
+﻿using NUnit.Framework;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     [TestFixture]
     public class KnownSourceValueInjectionTest

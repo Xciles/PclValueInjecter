@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     public class Country
     {

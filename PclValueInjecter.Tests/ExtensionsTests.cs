@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
-using Omu.ValueInjecter;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     [TestFixture]
     public class ExtensionsTests

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     public static class TestingTools
     {

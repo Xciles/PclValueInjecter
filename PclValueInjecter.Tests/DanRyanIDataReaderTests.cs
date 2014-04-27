@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using NUnit.Framework;
-using Omu.ValueInjecter;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     public class DanRyanIDataReaderTests
     {

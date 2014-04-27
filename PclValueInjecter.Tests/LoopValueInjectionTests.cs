@@ -1,8 +1,7 @@
-﻿using NUnit.Framework;
-using System;
-using Omu.ValueInjecter;
+﻿using System;
+using NUnit.Framework;
 
-namespace Tests
+namespace Xciles.PclValueInjecter.Tests
 {
     [TestFixture]
     public class LoopValueInjectionTests
