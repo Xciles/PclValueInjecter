@@ -38,7 +38,10 @@
   <ItemGroup>
     <Compile Include="ConventionInjection.cs" />
     <Compile Include="Creator.cs" />
-    <Compile Include="CustomInjections\Class1.cs" />
+    <Compile Include="CustomInjections\EnumsByStringName.cs" />
+    <Compile Include="CustomInjections\MapperInjection.cs" />
+    <Compile Include="CustomInjections\NormalToNullables.cs" />
+    <Compile Include="CustomInjections\NullablesToNormal.cs" />
     <Compile Include="CustomizableValueInjection.cs" />
     <Compile Include="DescriptorTools.cs" />
     <Compile Include="EnumerableTypeMapper.cs" />
