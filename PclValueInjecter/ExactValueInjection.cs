@@ -8,7 +8,7 @@ namespace Xciles.PclValueInjecter
     {
         protected override void Inject(object source, object target)
         {
-            var sp = source.GetProps().GetByName(sourcePref + SourceName());
+            var sp = source.GetProps().GetByName(SourcePref + SourceName());
             var tp = target.GetProps().GetByName(SearchTargetName(TargetName()));
 
             if (tp == null) return;

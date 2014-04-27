@@ -4,19 +4,19 @@ namespace Xciles.PclValueInjecter
 {
     public abstract class PrefixedValueInjection : LoopValueInjectionBase
     {
-        protected string targetPref;
+        protected string TargetPref;
 
-        protected string sourcePref;
+        protected string SourcePref;
 
         public PrefixedValueInjection TargetPrefix(string prefix)
         {
-            targetPref = prefix;
+            TargetPref = prefix;
             return this;
         }
 
         public PrefixedValueInjection SourcePrefix(string prefix)
         {
-            sourcePref = prefix;
+            SourcePref = prefix;
             return this;
         }
 
@@ -27,7 +27,7 @@ namespace Xciles.PclValueInjecter
         /// <returns></returns>
         protected string SearchTargetName(string s)
         {
-            return targetPref + s.RemovePrefix(sourcePref);
+            return TargetPref + s.RemovePrefix(SourcePref);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Xciles.PclValueInjecter
         /// <returns></returns>
         protected string SearchSourceName(string s)
         {
-            return sourcePref + s.RemovePrefix(targetPref);
+            return SourcePref + s.RemovePrefix(TargetPref);
         }
     }
 }
