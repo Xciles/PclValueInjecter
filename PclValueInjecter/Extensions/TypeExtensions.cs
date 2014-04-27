@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace Xciles.PclValueInjecter.Extensions
 {
@@ -12,6 +14,16 @@ namespace Xciles.PclValueInjecter.Extensions
             var isAnonymousType = hasCompilerGeneratedAttribute && nameContainsAnonymousType;
 
             return isAnonymousType;
+        }
+
+        public static bool IsEnumerable(this Type type)
+        {
+            if (type.IsGenericType)
+            {
+                if (type.GetGenericTypeDefinition().GetInterfaces().Contains(typeof(IEnumerable)))
+                    return true;
+            }
+            return false;
         }
     }
 }

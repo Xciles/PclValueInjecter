@@ -73,6 +73,7 @@
     <Compile Include="KnownTargetValueInjectionTest.cs" />
     <Compile Include="KohanTests.cs" />
     <Compile Include="LoopValueInjectionTests.cs" />
+    <Compile Include="MapperTests.cs" />
     <Compile Include="Noemata.cs" />
     <Compile Include="NullableInjectionsTests.cs" />
     <Compile Include="PrefixedValueInjectionTests.cs" />

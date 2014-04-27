@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConventionInjection.cs" />
+    <Compile Include="CustomInjections\Class1.cs" />
     <Compile Include="CustomizableValueInjection.cs" />
     <Compile Include="DescriptorTools.cs" />
     <Compile Include="ExactValueInjection.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="KnownTargetValueInjection.cs" />
     <Compile Include="LoopValueInjection.cs" />
     <Compile Include="LoopValueInjectionBase.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="NoSourceValueInjection.cs" />
     <Compile Include="PrefixedValueInjection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
