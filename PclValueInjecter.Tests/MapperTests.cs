@@ -6,10 +6,23 @@ namespace Xciles.PclValueInjecter.Tests
 {
     public class MapperTests
     {
+        public enum EFoo
+        {
+            Foo, 
+            Bar
+        }
+        public enum EBar
+        {
+            Foo,
+            Bar
+        }
+
         public class Foo
         {
             public string Name { get; set; }
+            public int? Tint { get; set; }
             public int Xyz { get; set; }
+            public EFoo SomeType { get; set; }
             public string Props { get; set; }
             public Foo Child { get; set; }
             public IEnumerable<Foo> Foos { get; set; }
@@ -18,6 +31,8 @@ namespace Xciles.PclValueInjecter.Tests
         public class Bar
         {
             public string Name { get; set; }
+            public int Tint { get; set; }
+            public EBar SomeType { get; set; }
             public string NoConvention { get; set; }
             public Bar Child { get; set; }
             public ICollection<Bar> Foos { get; set; }
@@ -66,9 +81,9 @@ namespace Xciles.PclValueInjecter.Tests
         {
             var foos = new List<Foo>
                            {
-                               new Foo {Name = "f1"},
-                               new Foo {Name = "f2"},
-                               new Foo {Name = "f3"},
+                               new Foo {Name = "f1", SomeType = EFoo.Bar},
+                               new Foo {Name = "f2", SomeType = EFoo.Foo},
+                               new Foo {Name = "f3", SomeType = EFoo.Bar},
                            };
 
             var foos2 = PclValueInjecter.Mapper.Map<IEnumerable<Foo>, IList<Foo>>(foos);
@@ -76,6 +91,10 @@ namespace Xciles.PclValueInjecter.Tests
             Assert.AreEqual("f1", foos2.First().Name);
             Assert.AreEqual("f2", foos2.Skip(1).First().Name);
             Assert.AreEqual("f3", foos2.Last().Name);
+
+            Assert.AreEqual(EFoo.Bar, foos2.First().SomeType);
+            Assert.AreEqual(EFoo.Foo, foos2.Skip(1).First().SomeType);
+            Assert.AreEqual(EFoo.Bar, foos2.Last().SomeType);
         }
 
         [Test]
@@ -85,17 +104,22 @@ namespace Xciles.PclValueInjecter.Tests
             {
                 Foos = new List<Foo>
                            {
-                               new Foo{Name = "f1"},
-                               new Foo{Name = "f2"},
-                               new Foo{Name = "f3"},
+                               new Foo{Name = "f1", SomeType = EFoo.Bar},
+                               new Foo{Name = "f2", SomeType = EFoo.Foo},
+                               new Foo{Name = "f3", SomeType = EFoo.Bar},
                            }
             };
 
-            var bar = Mapper.Map<Foo, Bar>(foo);
+            var bar = PclValueInjecter.Mapper.Map<Foo, Bar>(foo);
 
             Assert.AreEqual(foo.Foos.Count(), bar.Foos.Count());
             Assert.AreEqual("f1", bar.Foos.First().Name);
+            Assert.AreEqual("f2", bar.Foos.Skip(1).First().Name);
             Assert.AreEqual("f3", bar.Foos.Last().Name);
+
+            Assert.AreEqual(EBar.Bar, bar.Foos.First().SomeType);
+            Assert.AreEqual(EBar.Foo, bar.Foos.Skip(1).First().SomeType);
+            Assert.AreEqual(EBar.Bar, bar.Foos.Last().SomeType);
         }
 
 
