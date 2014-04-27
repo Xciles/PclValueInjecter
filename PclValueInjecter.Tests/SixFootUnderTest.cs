@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using Xciles.PclValueInjecter.Extensions;
 
 namespace Xciles.PclValueInjecter.Tests
 {

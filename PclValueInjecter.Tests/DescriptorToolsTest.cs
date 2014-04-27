@@ -24,7 +24,7 @@ namespace Xciles.PclValueInjecter.Tests
             w.Start();
             for (int i = 0; i < 100; i++)
             {
-                props.Find("Name", true);
+                props.GetByName("Name", true);
             }
 
             w.Stop();
@@ -44,8 +44,8 @@ namespace Xciles.PclValueInjecter.Tests
         [Test]
         public void GetByNameIgnoresCase()
         {
-            TypeDescriptor.GetProperties(typeof(Foo)).GetByName("name", true).IsNotNull();
-            TypeDescriptor.GetProperties(typeof(Foo)).GetByName("name", false).IsEqualTo(null);
+            new Foo().GetProps().GetByName("name", true).IsNotNull();
+            new Foo().GetProps().GetByName("name", false).IsEqualTo(null);
         }
 
         [Test]
