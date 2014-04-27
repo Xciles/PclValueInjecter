@@ -8,7 +8,7 @@ namespace Xciles.PclValueInjecter
     {
         protected override void Inject(object source, object target)
         {
-            foreach (PropertyDescriptor t in target.GetProps())
+            foreach (var t in target.GetProps())
             {
                 var t1 = t;
                 var es = UberFlatter.Flat(t.Name, source, type => TypesMatch(type, t1.PropertyType));
@@ -39,7 +39,7 @@ namespace Xciles.PclValueInjecter
     {
         protected override void Inject(object source, object target)
         {
-            foreach (PropertyDescriptor t in target.GetProps())
+            foreach (var t in target.GetProps())
             {
                 if (t.PropertyType != typeof(TTargetProperty)) continue;
 

@@ -8,7 +8,7 @@ namespace Xciles.PclValueInjecter
     {
         protected override void Inject(object source, object target)
         {
-            foreach (PropertyDescriptor sourceProp in source.GetProps())
+            foreach (var sourceProp in source.GetProps())
             {
                 var prop = sourceProp;
                 var endpoints = UberFlatter.Unflat(sourceProp.Name, target, t => TypesMatch(prop.PropertyType, t));
@@ -38,7 +38,7 @@ namespace Xciles.PclValueInjecter
     {
         protected override void Inject(object source, object target)
         {
-            foreach (PropertyDescriptor sourceProp in source.GetProps())
+            foreach (var sourceProp in source.GetProps())
             {
                 if(sourceProp.PropertyType != typeof(TSourceProperty)) continue;
                 var endpoints = UberFlatter.Unflat(sourceProp.Name, target, t => t == typeof(TTargetProperty));
