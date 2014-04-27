@@ -1,4 +1,5 @@
 ﻿using System;
+using Xciles.PclValueInjecter.Extensions;
 
 namespace Xciles.PclValueInjecter
 {

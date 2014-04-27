@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xciles.PclValueInjecter.Extensions;
 
 namespace Xciles.PclValueInjecter
 {

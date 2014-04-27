@@ -34,14 +34,15 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConventionInjection.cs" />
     <Compile Include="CustomizableValueInjection.cs" />
     <Compile Include="DescriptorTools.cs" />
     <Compile Include="ExactValueInjection.cs" />
-    <Compile Include="Extensions.cs" />
+    <Compile Include="Extensions\PropertyInfoExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="FlatLoopValueInjection.cs" />
     <Compile Include="IKnownSourceValueInjection.cs" />
     <Compile Include="INoSourceValueInjection.cs" />

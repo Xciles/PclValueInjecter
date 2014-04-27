@@ -1,4 +1,6 @@
-﻿namespace Xciles.PclValueInjecter
+﻿using Xciles.PclValueInjecter.Extensions;
+
+namespace Xciles.PclValueInjecter
 {
     ///<summary>
     ///</summary>
