@@ -3,7 +3,7 @@ PclValueInjecter
 Currently this is still a 'testing' version and will be improved ;). After more testing I will create and publish a Nuget package.
 
 
-This project provides a Portable Class Library implementation of Omu's [ValueInjecter](http://valueinjecter.codeplex.com/).
+This project provides a Portable Class Library (Profile 158) implementation of Omu's [ValueInjecter](http://valueinjecter.codeplex.com/).
 
 The main purpose of this project is to make ValueInjecter also available for Mono projects like Xamarin.Android & Xamarin.iOS.
 
