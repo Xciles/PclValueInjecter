@@ -5,7 +5,7 @@ using System.Reflection;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Xciles.PclValueInjecter")]
-[assembly: AssemblyDescription("A PclValueInjecter based on ValueInjecter but now for PCL! This library is still under development!")]
+[assembly: AssemblyDescription("A PclValueInjecter based on ValueInjecter but now for PCL!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Xciles.PclValueInjecter")]
