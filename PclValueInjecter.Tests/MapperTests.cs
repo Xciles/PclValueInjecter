@@ -8,7 +8,7 @@ namespace Xciles.PclValueInjecter.Tests
     {
         public enum EFoo
         {
-            Foo, 
+            Foo,
             Bar
         }
         public enum EBar
@@ -26,6 +26,7 @@ namespace Xciles.PclValueInjecter.Tests
             public string Props { get; set; }
             public Foo Child { get; set; }
             public IEnumerable<Foo> Foos { get; set; }
+            public IList<int> FooIds { get; set; }
         }
 
         public class Bar
@@ -36,6 +37,7 @@ namespace Xciles.PclValueInjecter.Tests
             public string NoConvention { get; set; }
             public Bar Child { get; set; }
             public ICollection<Bar> Foos { get; set; }
+            public IList<int> BarIds { get; set; }
         }
 
         [TearDown]
@@ -81,9 +83,9 @@ namespace Xciles.PclValueInjecter.Tests
         {
             var foos = new List<Foo>
                            {
-                               new Foo {Name = "f1", SomeType = EFoo.Bar},
-                               new Foo {Name = "f2", SomeType = EFoo.Foo},
-                               new Foo {Name = "f3", SomeType = EFoo.Bar},
+                               new Foo {Name = "f1", SomeType = EFoo.Bar, FooIds = new List<int>() { 1,2,3,4}},
+                               new Foo {Name = "f2", SomeType = EFoo.Foo, FooIds = new List<int>() { 1,2,3,4}},
+                               new Foo {Name = "f3", SomeType = EFoo.Bar, FooIds = new List<int>() { 1,2,3,4}},
                            };
 
             var foos2 = PclValueInjecter.Mapper.Map<IEnumerable<Foo>, IList<Foo>>(foos);
@@ -95,6 +97,14 @@ namespace Xciles.PclValueInjecter.Tests
             Assert.AreEqual(EFoo.Bar, foos2.First().SomeType);
             Assert.AreEqual(EFoo.Foo, foos2.Skip(1).First().SomeType);
             Assert.AreEqual(EFoo.Bar, foos2.Last().SomeType);
+
+            for (var i = 0; i < foos2.Count(); i++)
+            {
+                for (int j = 0; j < foos2[i].FooIds.Count(); j++)
+                {
+                    Assert.AreEqual(foos2[i].FooIds[j], foos[i].FooIds[j]);
+                }
+            }
         }
 
         [Test]
@@ -122,6 +132,21 @@ namespace Xciles.PclValueInjecter.Tests
             Assert.AreEqual(EBar.Bar, bar.Foos.Last().SomeType);
         }
 
+        [Test]
+        public void MapPlainLists()
+        {
+            var a = new List<int>() { 1, 2, 3, 4 };
+
+            var b = PclValueInjecter.Mapper.Map<IEnumerable<int>, IList<int>>(a);
+
+            var a1 = new List<double>() { 1.0, 2.0, 3.0, 4.0 };
+
+            var b1 = PclValueInjecter.Mapper.Map<IEnumerable<double>, IList<double>>(a1);
+
+            var c = new List<string>() { "a", "b", "c", "d" };
+
+            var d = PclValueInjecter.Mapper.Map<IEnumerable<string>, IList<string>>(c);
+        }
 
 
 

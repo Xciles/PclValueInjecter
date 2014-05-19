@@ -18,8 +18,17 @@ namespace Xciles.PclValueInjecter
 
             foreach (var o in source as IEnumerable)
             {
-                var t = Creator.Create(targetArgumentType);
-                add.Invoke(list, new[] { Mapper.Map(o, t, o.GetType(), targetArgumentType) });
+                // This might need a pretier solution
+                // Resolves base type lists not mapping correctly (Ilist<int> with only 0's, strings can't be created...)
+                if (o.GetType().BaseType == typeof(ValueType) || o is string) 
+                {
+                    add.Invoke(list, new[] { o });
+                }
+                else
+                {
+                    var t = Creator.Create(targetArgumentType);
+                    add.Invoke(list, new[] { Mapper.Map(o, t, o.GetType(), targetArgumentType) });
+                }
             }
             return (TTarget)list;
         }
