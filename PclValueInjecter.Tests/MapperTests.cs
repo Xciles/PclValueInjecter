@@ -83,9 +83,9 @@ namespace Xciles.PclValueInjecter.Tests
         {
             var foos = new List<Foo>
                            {
-                               new Foo {Name = "f1", SomeType = EFoo.Bar, FooIds = new List<int>() { 1,2,3,4}},
-                               new Foo {Name = "f2", SomeType = EFoo.Foo, FooIds = new List<int>() { 1,2,3,4}},
-                               new Foo {Name = "f3", SomeType = EFoo.Bar, FooIds = new List<int>() { 1,2,3,4}},
+                               new Foo { Name = "f1", SomeType = EFoo.Bar, FooIds = new List<int>() { 1,2,3,4 } },
+                               new Foo { Name = "f2", SomeType = EFoo.Foo, FooIds = new List<int>() { 1,2,3,4 } },
+                               new Foo { Name = "f3", SomeType = EFoo.Bar, FooIds = new List<int>() { 1,2,3,4 } },
                            };
 
             var foos2 = PclValueInjecter.Mapper.Map<IEnumerable<Foo>, IList<Foo>>(foos);
@@ -139,13 +139,28 @@ namespace Xciles.PclValueInjecter.Tests
 
             var b = PclValueInjecter.Mapper.Map<IEnumerable<int>, IList<int>>(a);
 
+            for (int j = 0; j < b.Count(); j++)
+            {
+                Assert.AreEqual(b[j], a[j]);
+            }
+
             var a1 = new List<double>() { 1.0, 2.0, 3.0, 4.0 };
 
             var b1 = PclValueInjecter.Mapper.Map<IEnumerable<double>, IList<double>>(a1);
 
+            for (int j = 0; j < b1.Count(); j++)
+            {
+                Assert.AreEqual(b1[j], a1[j]);
+            }
+
             var c = new List<string>() { "a", "b", "c", "d" };
 
             var d = PclValueInjecter.Mapper.Map<IEnumerable<string>, IList<string>>(c);
+
+            for (int j = 0; j < d.Count(); j++)
+            {
+                Assert.AreEqual(d[j], c[j]);
+            }
         }
 
 
