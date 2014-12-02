@@ -36,8 +36,8 @@ namespace Xciles.PclValueInjecter
                         if (!type.IsAnonymousType())
                             foreach (var action in Actions)
                                 action(type);
-
-                        var props = type.GetProperties();
+                        
+                        var props = type.GetRuntimeProperties().ToList();
                         Storage.Add(type, props);
                     }
                 }
@@ -63,10 +63,10 @@ namespace Xciles.PclValueInjecter
                             foreach (var action in Actions)
                                 action(type);
 
-                        var props = type.GetProperties()
+                        var props = type.GetRuntimeProperties()
                                         .Union(type
-                                        .GetInterfaces()
-                                        .SelectMany(t => t.GetProperties()));
+                                        .GetTypeInfo().ImplementedInterfaces
+                                        .SelectMany(t => t.GetRuntimeProperties()));
                         InfosStorage.Add(type, props);
                     }
                 }

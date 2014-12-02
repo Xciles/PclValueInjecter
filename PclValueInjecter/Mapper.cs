@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Xciles.PclValueInjecter
 {
@@ -22,9 +23,9 @@ namespace Xciles.PclValueInjecter
         public static object Map(object source, object target, Type sourceType, Type targetType)
         {
             target = target ?? Creator.Create(targetType);
-            var getMapper = typeof(MapperFactory).GetMethod("GetMapper").MakeGenericMethod(sourceType, targetType);
+            var getMapper = typeof(MapperFactory).GetTypeInfo().GetDeclaredMethod("GetMapper").MakeGenericMethod(sourceType, targetType);
             var mapper = getMapper.Invoke(null, null);
-            var map = mapper.GetType().GetMethod("Map");
+            var map = mapper.GetType().GetTypeInfo().GetDeclaredMethod("Map");
             return map.Invoke(mapper, new[] { source, target });
         }
     }

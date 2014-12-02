@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Xciles.PclValueInjecter.CustomInjections
 {
@@ -7,8 +8,8 @@ namespace Xciles.PclValueInjecter.CustomInjections
         protected override bool Match(ConventionInfo c)
         {
             return c.SourceProp.Name == c.TargetProp.Name
-                && c.SourceProp.Type.IsEnum
-                && c.TargetProp.Type.IsEnum;
+                && c.SourceProp.Type.GetTypeInfo().IsEnum
+                && c.TargetProp.Type.GetTypeInfo().IsEnum;
         }
 
         protected override object SetValue(ConventionInfo c)

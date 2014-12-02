@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Linq;
 
@@ -9,7 +10,7 @@ namespace Xciles.PclValueInjecter.Extensions
     {
         public static Boolean IsAnonymousType(this Type type)
         {
-            var hasCompilerGeneratedAttribute = type.GetCustomAttributes(typeof(CompilerGeneratedAttribute), false).Length > 0;
+            var hasCompilerGeneratedAttribute = type.GetTypeInfo().GetCustomAttributes(typeof(CompilerGeneratedAttribute), false).Any();
             var nameContainsAnonymousType = type.FullName.Contains("AnonymousType");
             var isAnonymousType = hasCompilerGeneratedAttribute && nameContainsAnonymousType;
 
@@ -18,9 +19,9 @@ namespace Xciles.PclValueInjecter.Extensions
 
         public static bool IsEnumerable(this Type type)
         {
-            if (type.IsGenericType)
+            if (type.GetTypeInfo().IsGenericType)
             {
-                if (type.GetGenericTypeDefinition().GetInterfaces().Contains(typeof(IEnumerable)))
+                if (type.GetGenericTypeDefinition().GetTypeInfo().ImplementedInterfaces.Contains(typeof(IEnumerable)))
                     return true;
             }
             return false;
